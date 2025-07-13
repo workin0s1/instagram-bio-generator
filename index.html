@@ -1,0 +1,1084 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Bio & Keywords Generator - Create Professional Bio & Hashtags</title>
+    <meta name="description" content="Generate professional Instagram bio and trending hashtags with our AI-powered tool. Create engaging bios, discover relevant keywords, and boost your social media presence.">
+    <meta name="keywords" content="instagram bio generator, hashtag generator, social media bio, instagram keywords, bio creator, hashtag maker, instagram marketing">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Instagram Bio Generator">
+    <meta property="og:title" content="Instagram Bio & Keywords Generator">
+    <meta property="og:description" content="Create professional Instagram bios and trending hashtags with our AI-powered generator tool.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Instagram Bio & Keywords Generator">
+    <meta name="twitter:description" content="Generate professional Instagram bio and trending hashtags instantly.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e3a8a 0%, #dc2626 100%);
+            min-height: 100vh;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #dc2626, #1e3a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #1e3a8a, #1e40af);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #dc2626;
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .ad-space {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .typing-animation {
+            border-right: 2px solid #dc2626;
+            animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #dc2626; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="glass-effect fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-red-500 to-blue-800 rounded-full flex items-center justify-center">
+                    <i class="fab fa-instagram text-white text-xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-white">BioGen Pro</h1>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('home')">Home</a>
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('bio-generator')">Bio Generator</a>
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('hashtag-generator')">Hashtags</a>
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('privacy')">Privacy</a>
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('contact')">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="btn-secondary text-white px-4 py-2 rounded-lg" onclick="showSection('login')">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </button>
+                <button class="btn-primary text-white px-4 py-2 rounded-lg" onclick="showSection('signup')">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </button>
+            </div>
+            
+            <div class="md:hidden">
+                <button class="text-white text-2xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+            <div class="flex flex-col space-y-4">
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('home')">Home</a>
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('bio-generator')">Bio Generator</a>
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('hashtag-generator')">Hashtags</a>
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('privacy')">Privacy</a>
+                <a href="#" class="nav-link text-white hover:text-red-400" onclick="showSection('contact')">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active min-h-screen pt-20">
+        <div class="container mx-auto px-6 py-12">
+            <!-- Hero Section -->
+            <div class="text-center mb-16">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 floating-animation">
+                    Create <span class="gradient-text">Perfect</span> Instagram Bio
+                </h1>
+                <p class="text-xl text-white opacity-90 mb-8 max-w-3xl mx-auto">
+                    Generate professional Instagram bios, discover trending hashtags, and boost your social media presence with our AI-powered tools.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-white px-8 py-4 rounded-lg text-lg font-semibold" onclick="showSection('bio-generator')">
+                        <i class="fas fa-magic mr-2"></i>Start Creating Bio
+                    </button>
+                    <button class="btn-secondary text-white px-8 py-4 rounded-lg text-lg font-semibold" onclick="showSection('hashtag-generator')">
+                        <i class="fas fa-hashtag mr-2"></i>Generate Hashtags
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Ad Space -->
+            <div class="ad-space rounded-lg mb-16">
+                <div class="text-center">
+                    <i class="fas fa-ad text-4xl mb-4"></i>
+                    <p class="text-lg">Advertisement Space</p>
+                    <p class="text-sm opacity-75">728x90 Banner Ad</p>
+                </div>
+            </div>
+            
+            <!-- Features -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="card rounded-xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-robot text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">AI-Powered</h3>
+                    <p class="text-gray-600">Advanced AI algorithms generate unique and engaging bios tailored to your personality and brand.</p>
+                </div>
+                
+                <div class="card rounded-xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-800 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hashtag text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Trending Hashtags</h3>
+                    <p class="text-gray-600">Discover the most relevant and trending hashtags to increase your post visibility and engagement.</p>
+                </div>
+                
+                <div class="card rounded-xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Boost Engagement</h3>
+                    <p class="text-gray-600">Increase your follower count and engagement rate with professionally crafted bios and strategic hashtags.</p>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid md:grid-cols-4 gap-6 mb-16">
+                <div class="card rounded-xl p-6 text-center">
+                    <div class="text-3xl font-bold gradient-text mb-2">50K+</div>
+                    <div class="text-gray-600">Bios Generated</div>
+                </div>
+                <div class="card rounded-xl p-6 text-center">
+                    <div class="text-3xl font-bold gradient-text mb-2">25K+</div>
+                    <div class="text-gray-600">Happy Users</div>
+                </div>
+                <div class="card rounded-xl p-6 text-center">
+                    <div class="text-3xl font-bold gradient-text mb-2">100K+</div>
+                    <div class="text-gray-600">Hashtags Generated</div>
+                </div>
+                <div class="card rounded-xl p-6 text-center">
+                    <div class="text-3xl font-bold gradient-text mb-2">99%</div>
+                    <div class="text-gray-600">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="section min-h-screen pt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="max-w-md mx-auto">
+                <div class="card rounded-xl p-8">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-sign-in-alt text-white text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h2>
+                        <p class="text-gray-600">Sign in to your account to continue</p>
+                    </div>
+                    
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Enter your email">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Enter your password">
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                                <label class="ml-2 block text-sm text-gray-700">Remember me</label>
+                            </div>
+                            <a href="#" class="text-sm text-red-600 hover:text-red-500">Forgot password?</a>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                        </button>
+                    </form>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-600">Don't have an account? 
+                            <a href="#" class="text-red-600 hover:text-red-500 font-semibold" onclick="showSection('signup')">Sign up</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section id="signup" class="section min-h-screen pt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="max-w-md mx-auto">
+                <div class="card rounded-xl p-8">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-800 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user-plus text-white text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-2">Create Account</h2>
+                        <p class="text-gray-600">Join thousands of users creating amazing bios</p>
+                    </div>
+                    
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your full name">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your email">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Create a password">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                            <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Confirm your password">
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <label class="ml-2 block text-sm text-gray-700">
+                                I agree to the <a href="#" class="text-blue-600 hover:text-blue-500" onclick="showSection('privacy')">Terms of Service</a> and <a href="#" class="text-blue-600 hover:text-blue-500" onclick="showSection('privacy')">Privacy Policy</a>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-secondary text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-user-plus mr-2"></i>Create Account
+                        </button>
+                    </form>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-600">Already have an account? 
+                            <a href="#" class="text-blue-600 hover:text-blue-500 font-semibold" onclick="showSection('login')">Sign in</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bio Generator Section -->
+    <section id="bio-generator" class="section min-h-screen pt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">Instagram Bio Generator</h2>
+                <p class="text-xl text-white opacity-90">Create the perfect bio that represents your personality and brand</p>
+            </div>
+            
+            <!-- Ad Space -->
+            <div class="ad-space rounded-lg mb-12">
+                <div class="text-center">
+                    <i class="fas fa-ad text-4xl mb-4"></i>
+                    <p class="text-lg">Advertisement Space</p>
+                    <p class="text-sm opacity-75">Responsive Banner Ad</p>
+                </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="card rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Bio Generator</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Name/Brand</label>
+                            <input type="text" id="bio-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Enter your name or brand">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Profession/Niche</label>
+                            <select id="bio-profession" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                <option value="">Select your profession</option>
+                                <option value="entrepreneur">Entrepreneur</option>
+                                <option value="artist">Artist</option>
+                                <option value="photographer">Photographer</option>
+                                <option value="influencer">Influencer</option>
+                                <option value="blogger">Blogger</option>
+                                <option value="musician">Musician</option>
+                                <option value="designer">Designer</option>
+                                <option value="coach">Coach</option>
+                                <option value="business">Business</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Bio Style</label>
+                            <select id="bio-style" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                <option value="professional">Professional</option>
+                                <option value="casual">Casual</option>
+                                <option value="creative">Creative</option>
+                                <option value="motivational">Motivational</option>
+                                <option value="funny">Funny</option>
+                                <option value="minimalist">Minimalist</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Keywords (Optional)</label>
+                            <input type="text" id="bio-keywords" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="e.g., travel, fitness, coffee lover">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Include Emojis</label>
+                            <div class="flex space-x-4">
+                                <label class="flex items-center">
+                                    <input type="radio" name="emojis" value="yes" class="text-red-600 focus:ring-red-500" checked>
+                                    <span class="ml-2 text-gray-700">Yes</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="emojis" value="no" class="text-red-600 focus:ring-red-500">
+                                    <span class="ml-2 text-gray-700">No</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button onclick="generateBio()" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-magic mr-2"></i>Generate Bio
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Generated Bio</h3>
+                    
+                    <div id="bio-result" class="bg-gray-50 rounded-lg p-6 mb-6 min-h-40">
+                        <div class="text-center text-gray-500 py-8">
+                            <i class="fas fa-user-circle text-4xl mb-4"></i>
+                            <p>Your generated bio will appear here...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button onclick="copyBio()" class="flex-1 btn-secondary text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-copy mr-2"></i>Copy Bio
+                        </button>
+                        <button onclick="generateBio()" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-redo mr-2"></i>Regenerate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hashtag Generator Section -->
+    <section id="hashtag-generator" class="section min-h-screen pt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">Hashtag Generator</h2>
+                <p class="text-xl text-white opacity-90">Discover trending hashtags to boost your post visibility</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="card rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Generate Hashtags</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Content Topic</label>
+                            <input type="text" id="hashtag-topic" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="e.g., fitness, travel, food">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                            <select id="hashtag-category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                <option value="">Select category</option>
+                                <option value="fitness">Fitness & Health</option>
+                                <option value="travel">Travel & Adventure</option>
+                                <option value="food">Food & Cooking</option>
+                                <option value="fashion">Fashion & Style</option>
+                                <option value="lifestyle">Lifestyle</option>
+                                <option value="business">Business & Marketing</option>
+                                <option value="art">Art & Creative</option>
+                                <option value="photography">Photography</option>
+                                <option value="music">Music</option>
+                                <option value="technology">Technology</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Number of Hashtags</label>
+                            <select id="hashtag-count" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                <option value="10">10 hashtags</option>
+                                <option value="20">20 hashtags</option>
+                                <option value="30" selected>30 hashtags</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Hashtag Type</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="trending" class="text-red-600 focus:ring-red-500" checked>
+                                    <span class="ml-2 text-gray-700">Trending</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="niche" class="text-red-600 focus:ring-red-500" checked>
+                                    <span class="ml-2 text-gray-700">Niche</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="branded" class="text-red-600 focus:ring-red-500">
+                                    <span class="ml-2 text-gray-700">Branded</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="location" class="text-red-600 focus:ring-red-500">
+                                    <span class="ml-2 text-gray-700">Location</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button onclick="generateHashtags()" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-hashtag mr-2"></i>Generate Hashtags
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Generated Hashtags</h3>
+                    
+                    <div id="hashtag-result" class="bg-gray-50 rounded-lg p-6 mb-6 min-h-40">
+                        <div class="text-center text-gray-500 py-8">
+                            <i class="fas fa-hashtag text-4xl mb-4"></i>
+                            <p>Your generated hashtags will appear here...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button onclick="copyHashtags()" class="flex-1 btn-secondary text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-copy mr-2"></i>Copy Hashtags
+                        </button>
+                        <button onclick="generateHashtags()" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-redo mr-2"></i>Regenerate
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ad Space -->
+            <div class="ad-space rounded-lg mt-12">
+                <div class="text-center">
+                    <i class="fas fa-ad text-4xl mb-4"></i>
+                    <p class="text-lg">Advertisement Space</p>
+                    <p class="text-sm opacity-75">320x50 Mobile Banner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section id="privacy" class="section min-h-screen pt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="max-w-4xl mx-auto">
+                <div class="card rounded-xl p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Privacy Policy</h2>
+                        <p class="text-gray-600">Last updated: January 2025</p>
+                    </div>
+                    
+                    <div class="prose prose-lg max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Information We Collect</h3>
+                        <p class="text-gray-600 mb-6">We collect information you provide directly to us, such as when you create an account, use our bio generator, or contact us for support. This may include your name, email address, and any content you generate using our tools.</p>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">How We Use Your Information</h3>
+                        <p class="text-gray-600 mb-6">We use the information we collect to:</p>
+                        <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+                            <li>Provide, maintain, and improve our services</li>
+                            <li>Process transactions and send related information</li>
+                            <li>Send you technical notices and support messages</li>
+                            <li>Respond to your comments and questions</li>
+                            <li>Analyze usage patterns to improve user experience</li>
+                        </ul>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Information Sharing</h3>
+                        <p class="text-gray-600 mb-6">We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this privacy policy. We may share your information in the following situations:</p>
+                        <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+                            <li>With your consent</li>
+                            <li>For legal compliance</li>
+                            <li>To protect our rights and safety</li>
+                            <li>In connection with a business transfer</li>
+                        </ul>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Data Security</h3>
+                        <p class="text-gray-600 mb-6">We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Cookies and Tracking</h3>
+                        <p class="text-gray-600 mb-6">We use cookies and similar tracking technologies to enhance your experience on our website. You can control cookie preferences through your browser settings.</p>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Your Rights</h3>
+                        <p class="text-gray-600 mb-6">You have the right to:</p>
+                        <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+                            <li>Access your personal information</li>
+                            <li>Correct inaccurate information</li>
+                            <li>Delete your personal information</li>
+                            <li>Object to processing of your information</li>
+                            <li>Data portability</li>
+                        </ul>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Contact Us</h3>
+                        <p class="text-gray-600 mb-6">If you have any questions about this Privacy Policy, please contact us at:</p>
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <p class="text-gray-800 font-semibold">Email: privacy@biogenpro.com</p>
+                            <p class="text-gray-800 font-semibold">Address: 123 Digital Street, Tech City, TC 12345</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section min-h-screen pt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">Contact Us</h2>
+                <p class="text-xl text-white opacity-90">Get in touch with our support team</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="card rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+                    
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Enter your name">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Enter your email">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                <option>General Inquiry</option>
+                                <option>Technical Support</option>
+                                <option>Feature Request</option>
+                                <option>Bug Report</option>
+                                <option>Business Partnership</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Enter your message..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="card rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-blue-800 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Email</h4>
+                                <p class="text-gray-600">support@biogenpro.com</p>
+                                <p class="text-gray-600">business@biogenpro.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-800 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Phone</h4>
+                                <p class="text-gray-600">+1 (555) 123-4567</p>
+                                <p class="text-gray-600">Mon-Fri 9AM-6PM EST</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-blue-800 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Address</h4>
+                                <p class="text-gray-600">123 Digital Street<br>Tech City, TC 12345<br>United States</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-800 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Business Hours</h4>
+                                <p class="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p class="text-gray-600">Weekend: 10:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center text-white hover:bg-blue-900">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-blue-800 rounded-full flex items-center justify-center">
+                            <i class="fab fa-instagram text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">BioGen Pro</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">The ultimate tool for creating professional Instagram bios and discovering trending hashtags.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white" onclick="showSection('home')">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" onclick="showSection('bio-generator')">Bio Generator</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" onclick="showSection('hashtag-generator')">Hashtag Generator</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" onclick="showSection('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" onclick="showSection('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get updates about new features and tips.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-l-lg border-0 bg-gray-800 text-white">
+                        <button class="btn-primary px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 BioGen Pro. All rights reserved. Made with ❤️ for Instagram creators.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Bio Generator functionality
+        function generateBio() {
+            const name = document.getElementById('bio-name').value;
+            const profession = document.getElementById('bio-profession').value;
+            const style = document.getElementById('bio-style').value;
+            const keywords = document.getElementById('bio-keywords').value;
+            const includeEmojis = document.querySelector('input[name="emojis"]:checked').value === 'yes';
+            
+            if (!name.trim()) {
+                alert('Please enter your name or brand name');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('bio-result').innerHTML = `
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600">Generating your perfect bio...</p>
+                </div>
+            `;
+            
+            // Simulate API call
+            setTimeout(() => {
+                const bio = generateBioText(name, profession, style, keywords, includeEmojis);
+                document.getElementById('bio-result').innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg p-4 border-l-4 border-red-500">
+                            <h4 class="font-semibold text-gray-800 mb-2">Generated Bio:</h4>
+                            <p class="text-gray-700 leading-relaxed">${bio}</p>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <p><strong>Character count:</strong> ${bio.length}/150</p>
+                            <p><strong>Style:</strong> ${style.charAt(0).toUpperCase() + style.slice(1)}</p>
+                        </div>
+                    </div>
+                `;
+            }, 2000);
+        }
+        
+        function generateBioText(name, profession, style, keywords, includeEmojis) {
+            const emojis = {
+                entrepreneur: '💼✨🚀',
+                artist: '🎨✨💫',
+                photographer: '📸✨🌟',
+                influencer: '💫🌟✨',
+                blogger: '✍️📝💭',
+                musician: '🎵🎶🎤',
+                designer: '🎨💻✨',
+                coach: '💪🏆🌟',
+                business: '💼🚀📈',
+                other: '✨🌟💫'
+            };
+            
+            const templates = {
+                professional: [
+                    `${name} | ${profession || 'Professional'}\n${keywords ? `${keywords.split(',').map(k => k.trim()).join(' • ')}` : 'Passionate about excellence'}\n${includeEmojis ? emojis[profession] || emojis.other : ''}`,
+                    `${name}\n${profession || 'Professional'} | ${keywords ? keywords.split(',').map(k => k.trim()).join(' & ') : 'Dedicated to success'}\n${includeEmojis ? emojis[profession] || emojis.other : ''}`
+                ],
+                casual: [
+                    `Hey, I'm ${name}! ${includeEmojis ? emojis[profession] || emojis.other : ''}\n${profession || 'Living my best life'}\n${keywords ? `Love: ${keywords.split(',').map(k => k.trim()).join(', ')}` : 'Just being awesome'}`,
+                    `${name} ${includeEmojis ? emojis[profession] || emojis.other : ''}\n${profession || 'Just doing my thing'}\n${keywords ? keywords.split(',').map(k => k.trim()).join(' | ') : 'Living life to the fullest'}`
+                ],
+                creative: [
+                    `✨ ${name} ✨\n${profession || 'Creative soul'} turning dreams into reality\n${keywords ? keywords.split(',').map(k => k.trim()).join(' × ') : 'Creating magic daily'}\n${includeEmojis ? emojis[profession] || emojis.other : ''}`,
+                    `${name} ${includeEmojis ? emojis[profession] || emojis.other : ''}\n${profession || 'Creative mind'} | Inspiration seeker\n${keywords ? keywords.split(',').map(k => k.trim()).join(' • ') : 'Art is life'}`
+                ],
+                motivational: [
+                    `${name} ${includeEmojis ? emojis[profession] || emojis.other : ''}\n${profession || 'Dream chaser'} | Inspiring others to greatness\n${keywords ? keywords.split(',').map(k => k.trim()).join(' & ') : 'Never give up'}\n"Success is a journey, not a destination"`,
+                    `${name}\n${profession || 'Motivational speaker'} | Empowering minds ${includeEmojis ? emojis[profession] || emojis.other : ''}\n${keywords ? keywords.split(',').map(k => k.trim()).join(' | ') : 'Believe in yourself'}`
+                ],
+                funny: [
+                    `${name} ${includeEmojis ? emojis[profession] || '😂🤣😄' : ''}\n${profession || 'Professional human'} | Part-time comedian\n${keywords ? keywords.split(',').map(k => k.trim()).join(' & ') : 'Making people laugh'}\nWarning: May cause excessive laughing`,
+                    `${name}\n${profession || 'Chief happiness officer'} ${includeEmojis ? emojis[profession] || '😂🤣😄' : ''}\n${keywords ? keywords.split(',').map(k => k.trim()).join(' | ') : 'Spreading smiles'}`
+                ],
+                minimalist: [
+                    `${name}\n${profession || 'Minimalist'}\n${keywords ? keywords.split(',').map(k => k.trim()).join(' • ') : 'Less is more'}`,
+                    `${name} | ${profession || 'Simplicity lover'}\n${keywords ? keywords.split(',').map(k => k.trim()).join(' & ') : 'Living simply'}`
+                ]
+            };
+            
+            const styleTemplates = templates[style] || templates.professional;
+            return styleTemplates[Math.floor(Math.random() * styleTemplates.length)];
+        }
+        
+        function copyBio() {
+            const bioText = document.querySelector('#bio-result .bg-white p').textContent;
+            navigator.clipboard.writeText(bioText).then(() => {
+                // Show success message
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+                button.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-600');
+                }, 2000);
+            });
+        }
+        
+        // Hashtag Generator functionality
+        function generateHashtags() {
+            const topic = document.getElementById('hashtag-topic').value;
+            const category = document.getElementById('hashtag-category').value;
+            const count = document.getElementById('hashtag-count').value;
+            
+            if (!topic.trim()) {
+                alert('Please enter a content topic');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('hashtag-result').innerHTML = `
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600">Generating trending hashtags...</p>
+                </div>
+            `;
+            
+            // Simulate API call
+            setTimeout(() => {
+                const hashtags = generateHashtagList(topic, category, count);
+                document.getElementById('hashtag-result').innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg p-4 border-l-4 border-red-500">
+                            <h4 class="font-semibold text-gray-800 mb-2">Generated Hashtags:</h4>
+                            <div class="text-gray-700 leading-relaxed">${hashtags}</div>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <p><strong>Total hashtags:</strong> ${hashtags.split('#').length - 1}</p>
+                            <p><strong>Category:</strong> ${category || 'General'}</p>
+                        </div>
+                    </div>
+                `;
+            }, 2000);
+        }
+        
+        function generateHashtagList(topic, category, count) {
+            const baseHashtags = {
+                fitness: ['fitness', 'workout', 'gym', 'healthy', 'fit', 'training', 'exercise', 'muscle', 'strong', 'health'],
+                travel: ['travel', 'adventure', 'wanderlust', 'explore', 'vacation', 'trip', 'journey', 'discover', 'tourism', 'travelling'],
+                food: ['food', 'foodie', 'delicious', 'cooking', 'recipe', 'chef', 'tasty', 'yummy', 'cuisine', 'foodlover'],
+                fashion: ['fashion', 'style', 'ootd', 'outfit', 'trendy', 'fashionista', 'stylish', 'designer', 'clothing', 'look'],
+                lifestyle: ['lifestyle', 'life', 'daily', 'mood', 'vibes', 'living', 'happy', 'blessed', 'grateful', 'positivity'],
+                business: ['business', 'entrepreneur', 'success', 'marketing', 'startup', 'hustle', 'goals', 'leadership', 'growth', 'mindset'],
+                art: ['art', 'artist', 'creative', 'artwork', 'painting', 'design', 'illustration', 'artistic', 'creativity', 'masterpiece'],
+                photography: ['photography', 'photo', 'photographer', 'picture', 'capture', 'moment', 'photooftheday', 'camera', 'lens', 'shot'],
+                music: ['music', 'musician', 'song', 'artist', 'concert', 'live', 'performance', 'melody', 'rhythm', 'sound'],
+                technology: ['technology', 'tech', 'innovation', 'digital', 'future', 'ai', 'coding', 'developer', 'startup', 'gadgets']
+            };
+            
+            let hashtags = [];
+            const topicWords = topic.toLowerCase().split(' ');
+            
+            // Add topic-based hashtags
+            topicWords.forEach(word => {
+                hashtags.push(word);
+                hashtags.push(word + 'lover');
+                hashtags.push(word + 'life');
+            });
+            
+            // Add category hashtags
+            if (category && baseHashtags[category]) {
+                hashtags.push(...baseHashtags[category]);
+            }
+            
+            // Add popular general hashtags
+            const popular = ['instagood', 'photooftheday', 'love', 'beautiful', 'happy', 'follow', 'like4like', 'amazing', 'bestoftheday', 'smile', 'fun', 'nice', 'good', 'cool', 'awesome', 'great', 'best', 'perfect', 'instagram', 'insta'];
+            hashtags.push(...popular);
+            
+            // Remove duplicates and limit count
+            hashtags = [...new Set(hashtags)];
+            hashtags = hashtags.slice(0, parseInt(count));
+            
+            // Format as hashtags
+            return hashtags.map(tag => `#${tag}`).join(' ');
+        }
+        
+        function copyHashtags() {
+            const hashtagText = document.querySelector('#hashtag-result .bg-white div').textContent;
+            navigator.clipboard.writeText(hashtagText).then(() => {
+                // Show success message
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+                button.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-600');
+                }, 2000);
+            });
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add some interactive animations
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add scroll animations
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.floating-animation');
+                if (parallax) {
+                    const speed = scrolled * 0.5;
+                    parallax.style.transform = `translateY(${speed}px)`;
+                }
+            });
+        });
+        
+        // Google AdSense Integration (Replace with your actual ad code)
+        function loadAds() {
+            // This is where you would load your actual Google AdSense code
+            // Example:
+            // (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+        
+        // Call loadAds when page loads
+        window.addEventListener('load', loadAds);
+    </script>
+    
+    <!-- Google AdSense (Replace with your actual ad code) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics (Replace with your actual tracking code) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>
